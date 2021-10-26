@@ -7,38 +7,38 @@ import { useEffect, useState } from 'react';
 const listOfMessagesFake = [
   {
     sender:"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
-    message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 26)).valueOf()
+    message:"Had a few hours today to render my #Spooktacular #Halloween art/carving submission. \n Happy Halloween Cool Cats fam! Jack-o-lantern",
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
     message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 26)).valueOf()
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
     message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 25)).valueOf()
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x90f79bf6eb2c4f870365e785982e1f101e93b906",
     message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 14)).valueOf()
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x15d34aaf54267db7d7c367839aaf71a00a2c6a65",
     message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 14)).valueOf()
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x976ea74026e726554db657fa54763abd0c3a0aa9",
     message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 14)).valueOf()
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x14dc79964da2c08b23698b3d3cc7ca32193d9955",
     message:"test",
-    timestamp: new Date(Date.UTC(2021, 10, 14)).valueOf()
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
 
 ]
@@ -83,25 +83,52 @@ function App() {
       setListOfMessages(messages);
   }
 
+  function autoResizeTextArea(e:any){
+    e.target.style.height = 'inherit';
+    e.target.style.height = `${e.target.scrollHeight+25}px`; 
+  }
+
   return (
     <div className="App">
-      <div className="Total">Total: {totalNumberOfMessages}</div>
-      <div className="etherscan"><a href="https://rinkeby.etherscan.io/address/0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747">Contract on Etherscan</a></div>
-      <button className="button connect" onClick={connectToUserWallet} >Connection to my wallet</button>
-      {/* <h1>Account: {userAccount}</h1> */}
-      <div className="message">
-        <input className="input" onChange={event => setUserMessageToSend(event.target.value)} placeholder="Send a message..." />
-        <button className="button" onClick={sendAMessage}>Send a message</button>
+      <div className="header">
+        <div className="Total">Total: {totalNumberOfMessages}</div>
+        <div className="etherscan"><a href="https://rinkeby.etherscan.io/address/0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747">Contract on Etherscan</a></div>
+        <button className="button connect" onClick={connectToUserWallet} >Connection to my wallet</button>
       </div>
+      {/* <h1>Account: {userAccount}</h1> */}
       {totalNumberOfMessages==="NOWALLET"?
         <div className="panel">
-          <div>Please connect your account for real messages</div>
+          <div className="sendmessage">
+
+            <div className="picture"></div>
+            <div>
+              <div className="top">
+                <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
+              </div>
+              <div className="bottom">
+                <div className="addingmedia">
+                  <button className="media"></button>
+                  <button className="media"></button>
+                  <button className="media"></button>
+                  <button className="media"></button>
+                </div>
+                <button className="button" onClick={sendAMessage}>Send</button>
+              </div>
+            </div>
+
+          </div>
+          {/* <div>Please connect your account for real messages</div> */}
           {listOfMessagesFake
                   .map((message: any, index: number) => {return ( 
-                  <div className="message" key={index}>
-                    <div className="sender">sender : {message.sender}</div>
-                    <div className="message">message : {message.message}</div>
-                    <div className="timestamp">time : {message.timestamp.toString()}</div>
+                  <div className="receivemessage" key={index}>
+                    <div className="picture"></div>
+                    <div className="message">
+                      <div className="information">
+                        <div className="sender">{message.sender}</div>
+                        <div className="timestamp">{message.timestamp.toString()}</div>
+                      </div>
+                      <div className="text">{message.message}</div>
+                    </div>
                   </div>
               )})
           }
@@ -111,10 +138,19 @@ function App() {
         : 
 
         
-        <div className="panel">{listOfMessages
+        <div className="panel">
+          
+          <div className="message">
+            <input className="input" spellCheck="false" onChange={event => setUserMessageToSend(event.target.value)} placeholder="Send a message..." />
+            <button className="button" onClick={sendAMessage}>Send a message</button>
+          </div>
+          {listOfMessages
                       .map((message: Message, index: number) => {return ( 
                       <div className="message" key={index}>
-                        <div className="sender">sender : {message.sender}</div>
+                        <div className="sender">
+                          <div className="picture"></div>
+                          <div className="name">sender : {message.sender}</div>
+                        </div>
                         <div className="message">message : {message.message}</div>
                         <div className="timestamp">time : {message.timestamp.toString()}</div>
                       </div>
