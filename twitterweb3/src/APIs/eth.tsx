@@ -9,6 +9,17 @@ declare global {
     }
 }
 
+type Message = {
+  sender: string,
+  message: string,
+  timestamp: Date
+}
+type ReceivedMessage = {
+  sender: string,
+  message: string,
+  timestamp: number
+}
+
 const checkWalletIsConnectedAndGetUserAccount = async (): Promise<string> => {
     try {
         const { ethereum } = window;
@@ -83,7 +94,7 @@ const getTotalNumberOfMessages = async (): Promise<string> => {
     }
 }
 
-const sendAMessageAndWaitForItToBeMined = async (): Promise<boolean> => {
+const sendAMessageAndWaitForItToBeMined = async (message: string): Promise<boolean> => {
     try {
         const { ethereum } = window;
   
@@ -92,7 +103,7 @@ const sendAMessageAndWaitForItToBeMined = async (): Promise<boolean> => {
           const signer = provider.getSigner();
           const contract = new ethers.Contract(CONTRACT_ADDRESS, TwitterWeb3ContractArtifact.abi, signer);
   
-          const messageTxn = await contract.message();
+          const messageTxn = await contract.sendMessage(message);
           console.log("Mining...", messageTxn.hash);
           await messageTxn.wait();
           console.log("Mined -- ", messageTxn.hash);
@@ -108,9 +119,51 @@ const sendAMessageAndWaitForItToBeMined = async (): Promise<boolean> => {
       }
 }
 
+const getAllMessages = async (): Promise<Message[]>  => {
+  try {
+    const { ethereum } = window;
+    if (ethereum) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const wavePortalContract = new ethers.Contract(CONTRACT_ADDRESS, TwitterWeb3ContractArtifact.abi, signer);
+
+      /*
+       * Call the getAllWaves method from your Smart Contract
+       */
+      const receivedMessages = await wavePortalContract.getAllMessages();
+      
+
+      /*
+       * We only need address, timestamp, and message in our UI so let's
+       * pick those out
+       */
+      let listOfMessages: Message[] = [];
+      receivedMessages.forEach((message: ReceivedMessage) => {
+        listOfMessages.unshift({
+          sender: message.sender,
+          message: message.message,
+          timestamp: new Date(message.timestamp * 1000)
+        });
+      });
+
+      return listOfMessages;
+    } else {
+      console.log("Ethereum object doesn't exist!")
+      throw Error;
+    }
+  } catch (error) {
+    console.log(error);
+    throw Error;
+  }
+}
+
 export {
     checkWalletIsConnectedAndGetUserAccount,
     connectWallet,
     getTotalNumberOfMessages,
-    sendAMessageAndWaitForItToBeMined
+    sendAMessageAndWaitForItToBeMined,
+    getAllMessages
+}
+export type {
+  Message
 }
