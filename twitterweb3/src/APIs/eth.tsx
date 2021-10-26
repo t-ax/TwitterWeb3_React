@@ -86,11 +86,11 @@ const getTotalNumberOfMessages = async (): Promise<string> => {
         console.log("Retrieved total wave count...", ""+count+"");
       } else {
         console.log("Ethereum object doesn't exist!");
-        return "";
+        return "NOWALLET";
       }
     } catch (error) {
       console.log(error)
-      return "ERR"+error;
+      return "NOWALLET";
     }
 }
 
