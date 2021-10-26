@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import TwitterWeb3ContractArtifact from '../Utils/TwitterWeb3ContractArtifact.json' 
 
-const CONTRACT_ADDRESS = "0x360cF79a86E7E67d9b9094823AF3FAaEF10E3980";
+const CONTRACT_ADDRESS = "0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747";
 
 declare global {
     interface Window {
