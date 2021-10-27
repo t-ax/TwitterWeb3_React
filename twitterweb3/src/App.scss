@@ -1,5 +1,6 @@
 $page_borders_px: 0.5px;
 $page_borders_color: #e8ebec;
+$primary_color:#2b9bf0;
 
 
 .App {
@@ -12,7 +13,7 @@ $page_borders_color: #e8ebec;
 button{
   border:none;  border-radius: 20px;
   height: 40px; width: 80px;
-  background: #2b9bf0;
+  background: $primary_color;
   color: white;
   font-weight:bold;
   font-size: 1.1em;
@@ -55,6 +56,7 @@ button{
     padding-top: 0.7em;
     display: flex;
     .input{
+      width: 100%;
       text-decoration: none;border:none;
       font-size: 1.3em;
       font-weight: 500;
@@ -81,7 +83,12 @@ button{
     position: relative; height: auto; width: 100%;
     grid-area: 1 / 1 / 1 / 2;
     height: 50px; width: 50px; border-radius: 50%;
-    background: grey;
+    background: $primary_color;
+    img{
+      height: 50px;
+      object-fit:cover;
+      
+    }
   }
   .message{
     padding: 0; margin: 0; margin-top: 0.3em;

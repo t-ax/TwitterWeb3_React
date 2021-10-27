@@ -3,8 +3,15 @@ import './App.scss';
 import * as ethService from './APIs/eth';
 import {Message} from './APIs/eth';
 import { useEffect, useState } from 'react';
+import MessageSendingBox from './Components/MessageSendingBox';
+import MessageReceived from './Components/MessageReceived';
 
 const listOfMessagesFake = [
+  {
+    sender:"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+    message:"Climbing on the window. \n Happy Halloween Cool Cats fam! Jack-o-lantern",
+    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
   {
     sender:"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
     message:"Had a few hours today to render my #Spooktacular #Halloween art/carving submission. \n Happy Halloween Cool Cats fam! Jack-o-lantern",
@@ -95,12 +102,12 @@ function App() {
         <div className="etherscan"><a href="https://rinkeby.etherscan.io/address/0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747">Contract on Etherscan</a></div>
         <button className="button connect" onClick={connectToUserWallet} >Connection to my wallet</button>
       </div>
-      {/* <h1>Account: {userAccount}</h1> */}
+      <h1>Account: {userAccount}</h1>
       {totalNumberOfMessages==="NOWALLET"?
         <div className="panel">
           <div className="sendmessage">
 
-            <div className="picture"></div>
+            <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/johnnnnny.svg`}/></div>
             <div>
               <div className="top">
                 <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
@@ -121,7 +128,7 @@ function App() {
           {listOfMessagesFake
                   .map((message: any, index: number) => {return ( 
                   <div className="receivemessage" key={index}>
-                    <div className="picture"></div>
+                    <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${message.sender.toLowerCase()}.svg`}/></div>
                     <div className="message">
                       <div className="information">
                         <div className="sender">{message.sender}</div>
@@ -140,22 +147,45 @@ function App() {
         
         <div className="panel">
           
-          <div className="message">
-            <input className="input" spellCheck="false" onChange={event => setUserMessageToSend(event.target.value)} placeholder="Send a message..." />
-            <button className="button" onClick={sendAMessage}>Send a message</button>
+          
+          <div className="sendmessage">
+
+            <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${userAccount}.svg`}/></div>
+            <div>
+              <div className="top">
+                <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
+              </div>
+              <div className="bottom">
+                <div className="addingmedia">
+                  <button className="media"></button>
+                  <button className="media"></button>
+                  <button className="media"></button>
+                  <button className="media"></button>
+                </div>
+                <button className="button" onClick={sendAMessage}>Send</button>
+              </div>
+            </div>
+
+
+{/* msg.sender : 0x4117455319eE6a8Bd98C80c0f5eab7830EC7A559
+    getmetamask: 0x4117455319ee6a8bd98c80c0f5eab7830ec7a559 */}
+
+
           </div>
           {listOfMessages
-                      .map((message: Message, index: number) => {return ( 
-                      <div className="message" key={index}>
-                        <div className="sender">
-                          <div className="picture"></div>
-                          <div className="name">sender : {message.sender}</div>
+                      .map((message: any, index: number) => {return ( 
+                        <div className="receivemessage" key={index}>
+                          <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${message.sender.toLowerCase()}.svg`}/></div>
+                          <div className="message">
+                            <div className="information">
+                              <div className="sender">{message.sender.toLowerCase()}</div>
+                              <div className="timestamp">{Math.trunc(((new Date().getTime()-message.timestamp)/3600000))}hr</div>
+                            </div>
+                            <div className="text">{message.message}</div>
+                          </div>
                         </div>
-                        <div className="message">message : {message.message}</div>
-                        <div className="timestamp">time : {message.timestamp.toString()}</div>
-                      </div>
-                  )})
-              }
+                    )})
+                }
         </div>
       }
     </div>
