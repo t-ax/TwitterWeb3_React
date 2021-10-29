@@ -1,5 +1,10 @@
 
-import './App.scss';
+import './Styles/App.scss';
+import logo from './Assets/Images/logo.png';
+import metamask from './Assets/Images/metamask.svg';
+import github from './Assets/Images/github.png';
+import etherscan from './Assets/Images/etherscan.jpeg';
+
 import * as ethService from './APIs/eth';
 import {Message} from './APIs/eth';
 import { useEffect, useState } from 'react';
@@ -52,7 +57,6 @@ const listOfMessagesFake = [
 
 function App() {
   const [userAccount, setUserAccount] = useState("");
-  const [userMessageToSend, setUserMessageToSend] = useState("");
   const [totalNumberOfMessages, setTotalNumberOfMessages] = useState("");
   const [listOfMessages, setListOfMessages] = useState<Message[]>([]);
 
@@ -79,8 +83,8 @@ function App() {
       setTotalNumberOfMessages(total);
   }
 
-  async function sendAMessage(){
-      await ethService.sendAMessageAndWaitForItToBeMined(userMessageToSend);
+  async function sendAMessage(msg: string){
+      await ethService.sendAMessageAndWaitForItToBeMined(msg);
       updateTotalNumberOfMessages();
       getAllMessages();
   }
@@ -90,104 +94,71 @@ function App() {
       setListOfMessages(messages);
   }
 
-  function autoResizeTextArea(e:any){
-    e.target.style.height = 'inherit';
-    e.target.style.height = `${e.target.scrollHeight+25}px`; 
-  }
+  
 
   return (
     <div className="App">
-      <div className="header">
+      <div className="leftpanel">
+        <div className="logo"> <img src={logo}/></div>
+        <div className="logo"> <img alt="Wallet Connect" src={metamask}/></div>{/* Wallet Connect */}
+        <div className="logo"> <img src={logo}/></div>{/* Ethereum Faucet */}
+        <div className="logo"> <img src={etherscan}/></div>{/* Github Code */}
+        <div className="logo"> <img src={github}/></div>{/* Github Code */}
+        
+        {/* etherscan */}
+        {/* Account */}
+        {/* CodeGithub */}
         <div className="Total">Total: {totalNumberOfMessages}</div>
         <div className="etherscan"><a href="https://rinkeby.etherscan.io/address/0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747">Contract on Etherscan</a></div>
         <button className="button connect" onClick={connectToUserWallet} >Connection to my wallet</button>
       </div>
-      <h1>Account: {userAccount}</h1>
+
       {totalNumberOfMessages==="NOWALLET"?
-        <div className="panel">
-          <div className="sendmessage">
-
-            <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/johnnnnny.svg`}/></div>
-            <div>
-              <div className="top">
-                <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
-              </div>
-              <div className="bottom">
-                <div className="addingmedia">
-                  <button className="media"></button>
-                  <button className="media"></button>
-                  <button className="media"></button>
-                  <button className="media"></button>
-                </div>
-                <button className="button" onClick={sendAMessage}>Send</button>
-              </div>
-            </div>
-
-          </div>
+        <div className="centralpanel">
+          <MessageSendingBox callback={sendAMessage} userAccount="johnnnnny" />
           {/* <div>Please connect your account for real messages</div> */}
-          {listOfMessagesFake
-                  .map((message: any, index: number) => {return ( 
-                  <div className="receivemessage" key={index}>
-                    <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${message.sender.toLowerCase()}.svg`}/></div>
-                    <div className="message">
-                      <div className="information">
-                        <div className="sender">{message.sender}</div>
-                        <div className="timestamp">{message.timestamp.toString()}</div>
-                      </div>
-                      <div className="text">{message.message}</div>
-                    </div>
-                  </div>
-              )})
+          {listOfMessagesFake.map((message: any, index: number) => {return ( 
+              <MessageReceived message={message} index={index}/>
+            )})
           }
         </div>
-
-
         : 
-
-        
-        <div className="panel">
-          
-          
-          <div className="sendmessage">
-
-            <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${userAccount}.svg`}/></div>
-            <div>
-              <div className="top">
-                <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
-              </div>
-              <div className="bottom">
-                <div className="addingmedia">
-                  <button className="media"></button>
-                  <button className="media"></button>
-                  <button className="media"></button>
-                  <button className="media"></button>
-                </div>
-                <button className="button" onClick={sendAMessage}>Send</button>
-              </div>
-            </div>
-
-
-{/* msg.sender : 0x4117455319eE6a8Bd98C80c0f5eab7830EC7A559
-    getmetamask: 0x4117455319ee6a8bd98c80c0f5eab7830ec7a559 */}
-
-
-          </div>
-          {listOfMessages
-                      .map((message: any, index: number) => {return ( 
-                        <div className="receivemessage" key={index}>
-                          <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${message.sender.toLowerCase()}.svg`}/></div>
-                          <div className="message">
-                            <div className="information">
-                              <div className="sender">{message.sender.toLowerCase()}</div>
-                              <div className="timestamp">{Math.trunc(((new Date().getTime()-message.timestamp)/3600000))}hr</div>
-                            </div>
-                            <div className="text">{message.message}</div>
-                          </div>
-                        </div>
-                    )})
-                }
+        <div className="centralpanel">
+          <MessageSendingBox callback={sendAMessage} userAccount={userAccount}/>
+          {listOfMessages.map((message: any, index: number) => {return ( 
+              <MessageReceived message={message} index={index}/>
+            )})
+          }
         </div>
       }
+
+        <div className="rightpanel">
+          <div  className="instructions">
+            <div className="title">Instructions</div>
+            <ul className="list">
+              <li>
+                  <div className="subtitle">#TweetOnBlockchain</div>
+                  <div className="text">This is a blockchain version of Twitter using the Ethereum Rinkeby Test Network</div>
+              </li>
+              <li>
+                  <div className="subtitle">#MetamaskMyData</div>
+                  <div className="text">The currently displayed messages are fake, connect your wallet to read real messages left by other users</div>
+              </li>
+              <li>
+                  <div className="subtitle">#NoLimits</div>
+                  <div className="text">You can send unlimited messages too that will be written forever on the blockchain for other users to read</div>
+              </li>
+              <li>
+                  <div className="subtitle">#MoneyFaucet</div>
+                  <div className="text">Reading is free but to write you need to pay fake ethereum (because it's a test Network) : <a target="_blank" href="https://faucet.rinkeby.io/">Get Fake ETH #OfficialLink</a></div>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+
+      {/* <h1>Account: {userAccount}</h1> */}
+
     </div>
   );
 }

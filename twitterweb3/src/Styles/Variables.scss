@@ -1,0 +1,13 @@
+$page_borders_px: 0.5px;
+$page_borders_color: #e8ebec;
+$primary_color:#2b9bf0;
+
+button{
+  border:none;  border-radius: 20px;
+  height: 40px; width: 80px;
+  background: $primary_color;
+  color: white;
+  font-weight:bold;
+  font-size: 1.1em;
+  opacity: 50%;
+}
