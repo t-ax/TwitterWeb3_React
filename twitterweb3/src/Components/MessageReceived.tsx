@@ -8,7 +8,10 @@ export default function MessageReceived(props:any) {
                 <div className="sender">{props.message.sender}</div>
                 <div className="timestamp">{props.message.timestamp.toString()}</div>
                 </div>
-                <div className="text">{props.message.message}</div>
+                <div className="text">
+                    {props.message.message}
+                    <div><img src={props.message.image} onError={(e: any) => e.target.src = ''} /></div>
+                </div>
             </div>
         </div>
     )

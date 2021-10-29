@@ -12,9 +12,10 @@
   position: fixed;
   width: 100px;
   display: flex;flex-direction: column; justify-content: center; align-items: flex-end; padding-right: 10px;
-  .img{height: 50px; display: flex; align-items: center; filter: grayscale(0%); filter: -webkit-grayscale(50%);}
+  .img{cursor:pointer;height: 50px; display: flex; align-items: center; filter: grayscale(0%); filter: -webkit-grayscale(50%);}
   .img>img{width: 30px; opacity: 100%;}
   .faucet>img{width: 31px; opacity: 100%; }
+  
 
 
 }
@@ -51,7 +52,12 @@
       li{
         text-align: start; 
         .subtitle{font-weight: 600;font-size: 0.9em;}
-        .text{font-weight: 200;font-size: 0.9em;color:rgb(98, 98, 98)}
+        .text{
+          font-weight: 200;font-size: 0.9em;color:rgb(98, 98, 98);
+          a{color: $primary_color;}
+          &.important{color: $primary_color;}
+          // &.important{color: rgb(255, 0, 0); opacity: 60%;}
+         }
       }
       // li:before{position: absolute; content:url("../Assets/Images/info.svg");opacity: 50%; left:0;}
     }

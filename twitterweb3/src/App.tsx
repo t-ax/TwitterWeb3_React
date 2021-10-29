@@ -15,43 +15,45 @@ import MessageReceived from './Components/MessageReceived';
 const listOfMessagesFake = [
   {
     sender:"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
-    message:"Climbing on the window. \n Happy Halloween Cool Cats fam! Jack-o-lantern",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
-  },
-  {
-    sender:"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
-    message:"Had a few hours today to render my #Spooktacular #Halloween art/carving submission. \n Happy Halloween Cool Cats fam! Jack-o-lantern",
+    message:"Time to enjoy life !! #FridayIsTheDay #WeekendHereICome",
+    image:"https://media.giphy.com/media/sTczweWUTxLqg/giphy.gif",
     timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
-    message:"test",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+    message:"When you love cats, you want to share your passion with the world ! #MoreCatsLessProblems",
+    image:"https://media.tenor.com/images/96163c159943a2b8960aa8322d12c6f5/tenor.gif",
+    timestamp: '2h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
     message:"test",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+    image:"",
+    timestamp: '3h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x90f79bf6eb2c4f870365e785982e1f101e93b906",
     message:"test",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+    image:"",
+    timestamp: '5h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x15d34aaf54267db7d7c367839aaf71a00a2c6a65",
     message:"test",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+    image:"",
+    timestamp: '8h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x976ea74026e726554db657fa54763abd0c3a0aa9",
     message:"test",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+    image:"",
+    timestamp: '15h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
     sender:"0x14dc79964da2c08b23698b3d3cc7ca32193d9955",
     message:"test",
-    timestamp: '1h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+    image:"",
+    timestamp: '19h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
 
 ]
@@ -146,12 +148,8 @@ function App() {
                   <div className="text">This is a blockchain version of Twitter using the Ethereum Rinkeby Test Network</div>
               </li>
               <li>
-                  <div className="subtitle">#GeneratedDicebearAvatar</div>
-                  <div className="text">An avatar is automatically & randomly generated based on your public address, you'll always have the same and it will always be different than others </div>
-              </li>
-              <li>
                   <div className="subtitle">#MetamaskMyData</div>
-                  <div className="text">The currently displayed messages are fake, connect your wallet (metamask button on the left panel) to read real messages left by other users</div>
+                  <div className="text important">The currently displayed messages are fake, connect your wallet (metamask button on the left panel) to read real messages left by other users</div>
               </li>
               <li>
                   <div className="subtitle">#NoLimits</div>
@@ -159,7 +157,11 @@ function App() {
               </li>
               <li>
                   <div className="subtitle">#MoneyFaucet</div>
-                  <div className="text">Reading is free but to write you need to pay fake ethereum (because it's a test Network) : <a target="_blank" href="https://faucet.rinkeby.io/">Get Fake ETH #OfficialLink</a></div>
+                  <div className="text">Reading is free but to write you need to use ethereum (it's free because it's a test Network) : <a target="_blank" href="https://faucet.rinkeby.io/">Get Free Test ETH #OfficialLink</a></div>
+              </li>
+              <li>
+                  <div className="subtitle">#GeneratedDicebearAvatar</div>
+                  <div className="text">An avatar is automatically & randomly generated based on your public address, you'll always have the same and it will always be different than others </div>
               </li>
               <li>
                   <div className="subtitle">#AccessibleCode&Contract</div>

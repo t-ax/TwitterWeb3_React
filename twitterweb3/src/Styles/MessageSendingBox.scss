@@ -29,8 +29,15 @@
     display : flex;
     justify-content: space-between;
     .addingmedia{
-      .media{width: 40px; margin-right: 2px;}
+      .input{
+        width: 100%;
+        text-decoration: none;border:none; color: rgb(112, 112, 112);
+        &:focus{outline:none; text-decoration: none;}
+        margin-bottom: 10px;
+      }
+      img{border-radius: 20px;max-height: 400px; max-width: 500px;}
       .text{font-size: 0.8em; font-weight: 900; color: $primary_color;}
+      // .media{width: 40px; margin-right: 2px;}
     }
   }
 }
