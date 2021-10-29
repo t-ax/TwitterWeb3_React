@@ -21,10 +21,11 @@ export default function MessageSendingBox(props: any) {
               </div>
               <div className="bottom">
                 <div className="addingmedia">
+                  <div className="text">Share your thoughts or give me a feedback</div>
+                  {/* <button className="media"></button>
                   <button className="media"></button>
                   <button className="media"></button>
-                  <button className="media"></button>
-                  <button className="media"></button>
+                  <button className="media"></button> */}
                 </div>
                 <button className="button" onClick={()=>props.callback(userMessageToSend)}>Send</button>
               </div>

@@ -11,11 +11,12 @@
   grid-area: 1 / 1 / 2 / 2;
   position: fixed;
   width: 100px;
-  display: flex;flex-direction: column; justify-content: center; align-items: center;
-  .logo{height: 50px; display: flex; align-items: center;}
-  .logo>img{width: 40px; opacity: 100%;}
+  display: flex;flex-direction: column; justify-content: center; align-items: flex-end; padding-right: 10px;
+  .img{height: 50px; display: flex; align-items: center; filter: grayscale(0%); filter: -webkit-grayscale(50%);}
+  .img>img{width: 30px; opacity: 100%;}
+  .faucet>img{width: 31px; opacity: 100%; }
 
-  
+
 }
 
 .centralpanel{
@@ -39,11 +40,11 @@
   display: flex; justify-content: center; align-items: flex-start;
   padding-top: 50px;
   .instructions{
-    background: rgb(248, 248, 248); 
-    height: 450px; width: 80%; padding: 10px; padding-left: 20px; 
+    background: #f7f9f9; 
+    height: 600px; width: 80%; padding: 10px; padding-left: 20px; 
     border-radius: 20px;
-    .title{font-weight: 900;font-size:large;text-align: start; margin: 10px;margin-left:0;}
-    .list{position: relative;height: 80%;margin: 0; padding:0;
+    .title{font-weight: 900;font-size:1.2em;text-align: start; margin: 10px;margin-left:0;}
+    .list{position: relative;height: 90%;margin: 0; padding:0;
       display: flex; flex-direction: column; justify-content: space-around; align-items: flex-start;
       list-style: none;
       // padding-left: 30px;
