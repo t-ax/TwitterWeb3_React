@@ -94,8 +94,8 @@ function App() {
       setTotalNumberOfMessages(total);
   }
 
-  async function sendAMessage(msg: string){
-      await ethService.sendAMessageAndWaitForItToBeMined(msg);
+  async function sendAMessage(msg: string, img: string){
+      await ethService.sendAMessageAndWaitForItToBeMined(msg, img);
       updateTotalNumberOfMessages();
       getAllMessages();
   }

@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import TwitterWeb3ContractArtifact from '../Utils/TwitterWeb3ContractArtifact.json' 
 
-const CONTRACT_ADDRESS = "0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747";
+const CONTRACT_ADDRESS = "0xa172d9772309E453Ed660f23247D446558Df813B";
 
 declare global {
     interface Window {
@@ -12,11 +12,13 @@ declare global {
 type Message = {
   sender: string,
   message: string,
+  image: string,
   timestamp: Date
 }
 type ReceivedMessage = {
   sender: string,
   message: string,
+  image: string,
   timestamp: number
 }
 
@@ -94,7 +96,7 @@ const getTotalNumberOfMessages = async (): Promise<string> => {
     }
 }
 
-const sendAMessageAndWaitForItToBeMined = async (message: string): Promise<boolean> => {
+const sendAMessageAndWaitForItToBeMined = async (message: string, image: string): Promise<boolean> => {
     try {
         const { ethereum } = window;
   
@@ -103,7 +105,7 @@ const sendAMessageAndWaitForItToBeMined = async (message: string): Promise<boole
           const signer = provider.getSigner();
           const contract = new ethers.Contract(CONTRACT_ADDRESS, TwitterWeb3ContractArtifact.abi, signer);
   
-          const messageTxn = await contract.sendMessage(message);
+          const messageTxn = await contract.sendMessage(message, image);
           // console.log("Mining...", messageTxn.hash);
           await messageTxn.wait();
           // console.log("Mined -- ", messageTxn.hash);
@@ -142,6 +144,7 @@ const getAllMessages = async (): Promise<Message[]>  => {
         listOfMessages.unshift({
           sender: message.sender,
           message: message.message,
+          image: message.image,
           timestamp: new Date(message.timestamp * 1000)
         });
       });
