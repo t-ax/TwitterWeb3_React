@@ -115,7 +115,7 @@ function App() {
         <div className="img logo"> <img src={logo}/></div>
         <div className="img wallet" onClick={connectToUserWallet}> <img alt="Wallet Connect" src={metamask}/></div>{/* Wallet Connect */}
         <a className="img faucet" target="_blank" href="https://faucet.rinkeby.io/"> <img src={faucet}/></a>{/* Ethereum Faucet */}
-        <a className="img etherscan" target="_blank" href="https://rinkeby.etherscan.io/address/0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747"> <img src={etherscan}/></a>{/* Github Code */}
+        <a className="img etherscan" target="_blank" href="https://rinkeby.etherscan.io/address/0xa172d9772309E453Ed660f23247D446558Df813B"> <img src={etherscan}/></a>{/* Github Code */}
         <a className="img github" target="_blank" href="https://faucet.rinkeby.io/"> <img src={github}/></a>{/* Github Code */}
         
         {/* etherscan */}
