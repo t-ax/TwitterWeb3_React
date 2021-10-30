@@ -1,5 +1,6 @@
 import { useState } from "react";
 import '../Styles/MessageSendingBox.scss'
+import imgloading from '../Assets/Images/loading.webp'
 
 export default function MessageSendingBox(props: any) {
 
@@ -25,7 +26,7 @@ export default function MessageSendingBox(props: any) {
                 <div className="addingmedia">
                   
                   <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true);setUserImageToSend(event.target.value)}} placeholder="Add a GIF URL (Optional) from GIPHY, ..." />
-                  {(userImageLoading) ? <><img src='https://media.giphy.com/media/sSgvbe1m3n93G/giphy.gif'/></> : <></>}
+                  {(userImageLoading) ? <><img src={imgloading}/></> : <></>}
                   <div><img src={userImageToSend} onLoad={(e: any) => {setUserImageLoading(false); }} onError={(e: any) => {setUserImageLoading(false);e.target.src = ''}} /></div>
                   
                   
