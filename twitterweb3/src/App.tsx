@@ -95,9 +95,13 @@ function App() {
   }
 
   async function sendAMessage(msg: string, img: string){
-      await ethService.sendAMessageAndWaitForItToBeMined(msg, img);
-      updateTotalNumberOfMessages();
-      getAllMessages();
+      if(msg===""){alert("The message is empty, if you don't know what to write give us a feedback 1 -> 5")}
+      else{
+        await ethService.sendAMessageAndWaitForItToBeMined(msg, img);
+        updateTotalNumberOfMessages();
+        getAllMessages();
+      }
+      
   }
 
   async function getAllMessages(){
@@ -128,8 +132,8 @@ function App() {
 
       {totalNumberOfMessages==="NOWALLET"?
         <div className="centralpanel">
-          <MessageSendingBox callback={sendAMessage} userAccount="johnnnnny" />
-          
+          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the left panel to interact with the Blockchain")}} userAccount="johnnnnny" />
+
           {listOfMessagesFake.map((message: any, index: number) => {return ( 
               <MessageReceived key={index} message={message} index={index}/>
             )})
