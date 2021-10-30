@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import '../Styles/MessageReceived.scss'
 export default function MessageReceived(props:any) {
+    const [userImageError, setUserImageError] = useState(false);
+
     return(
         <div className="receivemessage" key={props.index}>
             <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${props.message.sender.toLowerCase()}.svg`}/></div>
@@ -10,7 +13,7 @@ export default function MessageReceived(props:any) {
                 </div>
                 <div className="text">
                     {props.message.message}
-                    <div><img src={props.message.image} onError={(e: any) => e.target.src = ''} /></div>
+                    {(!userImageError) ? <div><img src={props.message.image} onError={(e: any) => {setUserImageError(true); e.target.src = ''}} /></div> : <></>}
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ export default function MessageSendingBox(props: any) {
   const [userMessageToSend, setUserMessageToSend] = useState("");
   const [userImageToSend, setUserImageToSend] = useState("");
   const [userImageLoading, setUserImageLoading] = useState(false);
+  const [userImageError, setUserImageError] = useState(false);
 
     function autoResizeTextArea(e:any){
         e.target.style.height = 'inherit';
@@ -25,10 +26,9 @@ export default function MessageSendingBox(props: any) {
               <div className="bottom">
                 <div className="addingmedia">
                   
-                  <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true);setUserImageToSend(event.target.value)}} placeholder="Add a GIF URL (Optional) from GIPHY, ..." />
+                  <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true); setUserImageError(false); setUserImageToSend(event.target.value)}} placeholder="Add a GIF URL (Optional) from GIPHY, ..." />
                   {(userImageLoading) ? <><img src={imgloading}/></> : <></>}
-                  <div><img src={userImageToSend} onLoad={(e: any) => {setUserImageLoading(false); }} onError={(e: any) => {setUserImageLoading(false);e.target.src = ''}} /></div>
-                  
+                  {(!userImageError) ? <><img src={userImageToSend} onLoad={(event: any) => {setUserImageLoading(false); setUserImageError(false);}} onError={(e: any) => {setUserImageLoading(false); setUserImageError(true); setUserImageToSend(''); e.target.src = ''}} /></> : <></>}
                   
                   {/* <button className="media"></button>
                   <button className="media"></button>

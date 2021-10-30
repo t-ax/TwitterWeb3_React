@@ -119,7 +119,7 @@ function App() {
       {totalNumberOfMessages==="NOWALLET"?
         <div className="centralpanel">
           <MessageSendingBox callback={sendAMessage} userAccount="johnnnnny" />
-          {/* <div>Please connect your account for real messages</div> */}
+          
           {listOfMessagesFake.map((message: any, index: number) => {return ( 
               <MessageReceived message={message} index={index}/>
             )})
