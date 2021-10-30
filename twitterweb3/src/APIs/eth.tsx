@@ -25,10 +25,10 @@ const checkWalletIsConnectedAndGetUserAccount = async (): Promise<string> => {
         const { ethereum } = window;
         
         if (!ethereum) {
-          console.log("Make sure you have metamask!");
+          // console.log("Make sure you have metamask!");
           return "";
         } else {
-          console.log("We have the ethereum object", ethereum);
+          // console.log("We have the ethereum object", ethereum);
         }
         
         /*
@@ -38,15 +38,15 @@ const checkWalletIsConnectedAndGetUserAccount = async (): Promise<string> => {
         
         if (accounts.length !== 0) {
           const account = accounts[0];
-          console.log("Found an authorized account:", account);
-          console.log(typeof(account));
+          // console.log("Found an authorized account:", account);
+          // console.log(typeof(account));
           return account;
         } else {
-          console.log("No authorized account found")
+          // console.log("No authorized account found")
           return "";
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         return "ERR"+error;
       }
 }
@@ -59,17 +59,17 @@ const connectWallet = async (): Promise<string> => {
         alert("Get MetaMask!");
         return "";
       }
-
+      
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
       const account = accounts[0];
-      console.log("Connected", account);
-      return account;
+      // console.log("Connected", account);
+      return account;   
       
-    } catch (error) {
-      console.log(error)
-      return "ERR"+error;
-    }
+    } catch (error :any) {
+      // console.log("test"+error.code)
+      return error.code;
+    } 
 }
 
 const getTotalNumberOfMessages = async (): Promise<string> => {
@@ -83,13 +83,13 @@ const getTotalNumberOfMessages = async (): Promise<string> => {
 
         let count = await contract.getTotalMessagesCount();
         return ""+count+"";
-        console.log("Retrieved total wave count...", ""+count+"");
+        // console.log("Retrieved total wave count...", ""+count+"");
       } else {
-        console.log("Ethereum object doesn't exist!");
+        // console.log("Ethereum object doesn't exist!");
         return "NOWALLET";
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       return "NOWALLET";
     }
 }
@@ -104,17 +104,17 @@ const sendAMessageAndWaitForItToBeMined = async (message: string): Promise<boole
           const contract = new ethers.Contract(CONTRACT_ADDRESS, TwitterWeb3ContractArtifact.abi, signer);
   
           const messageTxn = await contract.sendMessage(message);
-          console.log("Mining...", messageTxn.hash);
+          // console.log("Mining...", messageTxn.hash);
           await messageTxn.wait();
-          console.log("Mined -- ", messageTxn.hash);
+          // console.log("Mined -- ", messageTxn.hash);
           
           return true;
         } else {
-          console.log("Ethereum object doesn't exist!");
+          // console.log("Ethereum object doesn't exist!");
           return false;
         }
       } catch (error) {
-        console.log(error)
+        // console.log(error)
         return false;
       }
 }
@@ -148,11 +148,11 @@ const getAllMessages = async (): Promise<Message[]>  => {
 
       return listOfMessages;
     } else {
-      console.log("Ethereum object doesn't exist!")
+      // console.log("Ethereum object doesn't exist!")
       throw Error;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     throw Error;
   }
 }

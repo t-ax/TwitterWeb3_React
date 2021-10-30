@@ -64,9 +64,11 @@ function App() {
   const [listOfMessages, setListOfMessages] = useState<Message[]>([]);
 
   useEffect(()=>{
+    
     initUserWallet();
     updateTotalNumberOfMessages();
     getAllMessages();
+    
   }, [])
 
   async function initUserWallet(){
@@ -75,10 +77,16 @@ function App() {
   }
 
   async function connectToUserWallet(){
+    
       let account = await ethService.connectWallet();
-      setUserAccount(account);
-      updateTotalNumberOfMessages();
-      getAllMessages();
+      if(account=="-32002"){
+        alert("Connection request already pending on Metamask, please open your wallet and approve the request")
+      }
+      else{
+        setUserAccount(account);
+        updateTotalNumberOfMessages();
+        getAllMessages();
+      }
   }
 
   async function updateTotalNumberOfMessages(){
@@ -93,8 +101,10 @@ function App() {
   }
 
   async function getAllMessages(){
+    try{
       let messages = await ethService.getAllMessages();
       setListOfMessages(messages);
+    }catch(error){}
   }
 
   
@@ -121,7 +131,7 @@ function App() {
           <MessageSendingBox callback={sendAMessage} userAccount="johnnnnny" />
           
           {listOfMessagesFake.map((message: any, index: number) => {return ( 
-              <MessageReceived message={message} index={index}/>
+              <MessageReceived key={index} message={message} index={index}/>
             )})
           }
         </div>
@@ -129,7 +139,7 @@ function App() {
         <div className="centralpanel">
           <MessageSendingBox callback={sendAMessage} userAccount={userAccount}/>
           {listOfMessages.map((message: any, index: number) => {return ( 
-              <MessageReceived message={message} index={index}/>
+              <MessageReceived key={index} message={message} index={index}/>
             )})
           }
         </div>
