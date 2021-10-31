@@ -47,7 +47,7 @@ export default function MessageSendingBox(props: any) {
                   <button className="media"></button> */}
                   <div className="text">Share your thoughts or give me a feedback</div>
                 </div>
-                <button className="button" onClick={()=>props.callback(userMessageToSend, userImageToSend)}>Send</button>
+                <button className="button" onClick={handleCallback}>Send</button>
               </div>
             </div>
 

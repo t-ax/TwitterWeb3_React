@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import TwitterWeb3ContractArtifact from '../Utils/TwitterWeb3ContractArtifact.json' 
 
-const CONTRACT_ADDRESS = "0xa172d9772309E453Ed660f23247D446558Df813B";
+export const CONTRACT_ADDRESS = "0x79121464b32b80C9154538aA9e3EcA6A91797da8";
 
 export const listOfMessagesFake = [
   {                                           
@@ -153,8 +153,10 @@ const sendAMessageAndWaitForItToBeMined = async (message: string, image: string)
   
           const messageTxn = await contract.sendMessage(message, image);
           // console.log("Mining...", messageTxn.hash);
+          alert("Mining...")
           await messageTxn.wait();
           // console.log("Mined -- ", messageTxn.hash);
+          alert("Message Mined...")
           
           return true;
         } else {
