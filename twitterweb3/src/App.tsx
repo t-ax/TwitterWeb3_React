@@ -38,8 +38,8 @@ const listOfMessagesFake = [
   },
   {
     sender:"0x90f79bf6eb2c4f870365e785982e1f101e93b906",
-    message:"test",
-    image:"",
+    message:"Salud !!!",
+    image:"https://media.giphy.com/media/Zhxd2OJm3bems/giphy.gif",
     timestamp: '5h'//new Date(Date.UTC(2021, 10, 26)).valueOf()
   },
   {
@@ -138,7 +138,7 @@ function App() {
 
       {totalNumberOfMessages==="NOWALLET"?
         <div className="centralpanel">
-          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the left panel to interact with the Blockchain")}} avatar={randomAvatar("johnnnnny")} />
+          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the icon panel to interact with the Blockchain")}} avatar={randomAvatar("johnnnnny")} />
 
           {listOfMessagesFake.map((message: any, index: number) => {return ( 
               <MessageReceived key={index} message={message} index={index} avatar={randomAvatar(message.sender.toLowerCase())}/>
@@ -169,7 +169,7 @@ function App() {
               </li>
               <li>
                   <div className="subtitle">#MetamaskMyData</div>
-                  <div className="text important">The currently displayed messages are fake, connect your wallet (metamask button on the left panel) to read real messages left by other users</div>
+                  <div className="text important">The currently displayed messages are fake, connect your wallet (metamask button on the icon panel) to read real messages left by other users</div>
               </li>
               <li>
                   <div className="subtitle">#NoLimits</div>
@@ -185,7 +185,7 @@ function App() {
               </li>
               <li>
                   <div className="subtitle">#AccessibleCode&Contract</div>
-                  <div className="text">On the left panel, you may click on the Etherscan icon to get information about the smart contract used in this website and you may click on the github icon to check the Solidity & React source code </div>
+                  <div className="text">On the icon panel, you may click on the Etherscan icon to get information about the smart contract used in this website and you may click on the github icon to check the Solidity & React source code </div>
               </li>
             </ul>
           </div>

@@ -1,7 +1,7 @@
 @import './Variables.scss';
 .receivemessage{
     position: relative; height: auto; width: 100%;
-    display: grid; grid-template: 100% / 10% 90%;
+    display: grid; grid-template: 100% / 60px auto;
     padding: 1em;
     border: $page_borders_px solid $page_borders_color;border-top: none;
     .picture{
@@ -12,6 +12,7 @@
       img{height: 50px; width: 50px;border-radius: 50%;}
     }
     .message{
+      overflow: hidden;overflow-wrap: anywhere;
       padding: 0; margin: 0; margin-top: 0.3em;
       position: relative; height: auto; width: 100%;
       grid-area: 1 / 2 / 1 / 3;
@@ -27,7 +28,7 @@
         
         .timestamp{
           color: grey;
-  
+          text-align: right;
           &::before{
             content:'·';
             padding: 0 5px;
@@ -40,3 +41,15 @@
       }
     }
   }
+
+// Mobile
+@media only screen and (max-width: 1024px) {
+  // .information{flex-direction: column;}
+  // .timestamp{&::before{display:none;}}
+  .receivemessage{padding: 0.4em;
+      .message{
+        .information>*{font-size: 0.8em;}
+        .text{img{max-width: 80vw}}
+      }
+    }
+}

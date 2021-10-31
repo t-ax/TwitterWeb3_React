@@ -58,7 +58,7 @@ const connectWallet = async (): Promise<string> => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("Get MetaMask!");
+        alert("No CryptoWallet found, get MetaMask");
         return "";
       }
       
