@@ -4,10 +4,12 @@ import logo from './Assets/Images/logo.png';
 import faucet from './Assets/Images/faucet.jpg';
 import metamask from './Assets/Images/metamask.svg';
 import github from './Assets/Images/github.png';
+import giphy from './Assets/Images/giphy.png';
 import etherscan from './Assets/Images/etherscan.jpeg';
 
 import * as ethService from './APIs/eth';
 import {Message} from './APIs/eth';
+import {randomAvatar} from './APIs/dicebears';
 import { useEffect, useState } from 'react';
 import MessageSendingBox from './Components/MessageSendingBox';
 import MessageReceived from './Components/MessageReceived';
@@ -79,7 +81,7 @@ function App() {
   async function connectToUserWallet(){
     
       let account = await ethService.connectWallet();
-      if(account=="-32002"){
+      if(account==="-32002"){
         alert("Connection request already pending on Metamask, please open your wallet and approve the request")
       }
       else{
@@ -117,39 +119,36 @@ function App() {
     <div className="App">
       <div className="leftpanel">
         <div className="img logo"> <img src={logo}/></div>
-        <div className="img wallet" onClick={connectToUserWallet}> <img alt="Wallet Connect" src={metamask}/></div>{/* Wallet Connect */}
-        <a className="img faucet" target="_blank" href="https://faucet.rinkeby.io/"> <img src={faucet}/></a>{/* Ethereum Faucet */}
-        <a className="img etherscan" target="_blank" href="https://rinkeby.etherscan.io/address/0xa172d9772309E453Ed660f23247D446558Df813B"> <img src={etherscan}/></a>{/* Github Code */}
-        <a className="img github" target="_blank" href="https://faucet.rinkeby.io/"> <img src={github}/></a>{/* Github Code */}
+        <div className="img wallet" title="Metamask - Connect your Wallet to send & read messages" onClick={connectToUserWallet}> <img alt="Wallet Connect" src={metamask}/></div>{/* Wallet Connect */}
+        <a className="img giphy" title="GIF URLs - Add gifs to your messages" target="_blank" rel="noreferrer" href="https://giphy.com/search/"> <img src={giphy}/></a>{/* Giphy  */}
+        <a className="img faucet" title="Get ETHs - Rinkeby Test Network Faucet" target="_blank" rel="noreferrer" href="https://faucet.rinkeby.io/"> <img src={faucet}/></a>{/* Ethereum Faucet */}
+        <a className="img etherscan" title="Smart Contract - Consult the properties and transaction history" target="_blank" rel="noreferrer" href="https://rinkeby.etherscan.io/address/0xa172d9772309E453Ed660f23247D446558Df813B"> <img src={etherscan}/></a>{/* Contract */}
+        <a className="img github" title="Source Code - Solidity & React Repositories" target="_blank" rel="noreferrer" href="https://faucet.rinkeby.io/"> <img src={github}/></a>{/* Github Code */}
         
-        {/* etherscan */}
-        {/* Account */}
-        {/* CodeGithub */}
-        {/* <div className="Total">Total: {totalNumberOfMessages}</div>
-        <div className="etherscan"><a href="https://rinkeby.etherscan.io/address/0xd6a5B3390B8DdD0593A12E9C86d631D9033C9747">Contract on Etherscan</a></div>
-        <button className="button connect" onClick={connectToUserWallet} >Connection to my wallet</button> */}
+        {/* https://giphy.com/search/ */}
       </div>
 
       {totalNumberOfMessages==="NOWALLET"?
         <div className="centralpanel">
-          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the left panel to interact with the Blockchain")}} userAccount="johnnnnny" />
+          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the left panel to interact with the Blockchain")}} avatar={randomAvatar("johnnnnny")} />
 
           {listOfMessagesFake.map((message: any, index: number) => {return ( 
-              <MessageReceived key={index} message={message} index={index}/>
+              <MessageReceived key={index} message={message} index={index} avatar={randomAvatar(message.sender.toLowerCase())}/>
             )})
           }
         </div>
         : 
         <div className="centralpanel">
-          <MessageSendingBox callback={sendAMessage} userAccount={userAccount}/>
+          <MessageSendingBox callback={sendAMessage} avatar={randomAvatar(userAccount)}/>
           {listOfMessages.map((message: any, index: number) => {return ( 
-              <MessageReceived key={index} message={message} index={index}/>
+              <MessageReceived key={index} message={message} index={index} avatar={randomAvatar(message.sender.toLowerCase())}/>
             )})
           }
         </div>
       }
 
         <div className="rightpanel">
+        {totalNumberOfMessages==="NOWALLET"? <></> : <h2>Account: {userAccount}</h2>}
           <div  className="instructions">
             <div className="title">Instructions</div>
             <ul className="list">
@@ -171,7 +170,7 @@ function App() {
               </li>
               <li>
                   <div className="subtitle">#MoneyFaucet</div>
-                  <div className="text">Reading is free but to write you need to use ethereum (it's free because it's a test Network) : <a target="_blank" href="https://faucet.rinkeby.io/">Get Free Test ETH #OfficialLink</a></div>
+                  <div className="text">Reading is free but to write you need to use ethereum (it's free because it's a test Network) : <a target="_blank" rel="noreferrer" href="https://faucet.rinkeby.io/">Get Free Test ETH #OfficialLink</a></div>
               </li>
               <li>
                   <div className="subtitle">#GeneratedDicebearAvatar</div>

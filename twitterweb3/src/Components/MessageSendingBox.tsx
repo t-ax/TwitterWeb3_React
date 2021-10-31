@@ -1,6 +1,7 @@
 import { useState } from "react";
 import '../Styles/MessageSendingBox.scss'
 import imgloading from '../Assets/Images/loading.webp'
+import { buildQueries } from "@testing-library/dom";
 
 export default function MessageSendingBox(props: any) {
 
@@ -18,7 +19,7 @@ export default function MessageSendingBox(props: any) {
     return (
         <div className="sendmessage">
 
-            <div className="picture"><img src={`https://avatars.dicebear.com/api/open-peeps/${props.userAccount}.svg`}/></div>
+            <div className="picture"><img src={props.avatar}/></div>
             <div>
               <div className="top">
                 <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
@@ -26,9 +27,9 @@ export default function MessageSendingBox(props: any) {
               <div className="bottom">
                 <div className="addingmedia">
                   
-                  <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true); setUserImageError(false); setUserImageToSend(event.target.value)}} placeholder="Add a GIF URL (Optional) from GIPHY, ..." />
+                  <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true); setUserImageError(false); setUserImageToSend(event.target.value)}} placeholder="Optional: GIF URL (left panel - black icon)" />
                   {(userImageLoading) ? <><img src={imgloading}/></> : <></>}
-                  {(!userImageError) ? <><img src={userImageToSend} onLoad={(event: any) => {setUserImageLoading(false); setUserImageError(false);}} onError={(e: any) => {setUserImageLoading(false); setUserImageError(true); setUserImageToSend(''); e.target.src = ''}} /></> : <></>}
+                  {(!userImageError) ? <div><img src={userImageToSend} onLoad={(event: any) => {setUserImageLoading(false); setUserImageError(false);}} onError={(e: any) => {setUserImageLoading(false); setUserImageError(true); setUserImageToSend(''); e.target.src = ''}} /></div> : <></>}
                   
                   {/* <button className="media"></button>
                   <button className="media"></button>
