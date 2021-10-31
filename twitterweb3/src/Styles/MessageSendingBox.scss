@@ -9,14 +9,14 @@
       position: relative; height: auto; width: 100%;
       grid-area: 1 / 1 / 1 / 2;
       height: 50px; width: 50px; border-radius: 50%;
-      background: $primary_color;
+      background: $primary_color_light;
       img{height: 50px; width: 50px;border-radius: 50%;}
     }
 
   .top{
     padding-top: 0.7em;
     display: flex;
-    .input{
+    .input{padding: 0; margin: 0;
       width: 100%;
       text-decoration: none;border:none;
       font-size: 1.3em;
@@ -30,7 +30,7 @@
     display : flex;
     justify-content: space-between;
     .addingmedia{
-      .input{
+      .input{ padding: 0; margin: 0;
         width: 100%;
         text-decoration: none;border:none; color: rgb(112, 112, 112);
         &:focus{outline:none; text-decoration: none;}

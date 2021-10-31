@@ -6,6 +6,9 @@ import metamask from './Assets/Images/metamask.svg';
 import github from './Assets/Images/github.png';
 import giphy from './Assets/Images/giphy.png';
 import etherscan from './Assets/Images/etherscan.jpeg';
+import userconnected from './Assets/Images/user-connected.svg';
+import userdisconnected from './Assets/Images/user-disconnected.svg';
+
 
 import * as ethService from './APIs/eth';
 import {Message} from './APIs/eth';
@@ -79,9 +82,9 @@ function App() {
   }
 
   async function connectToUserWallet(){
-    
+    if(userAccount==""){
       let account = await ethService.connectWallet();
-      if(account==="-32002"){
+      if(account=="-32002"){
         alert("Connection request already pending on Metamask, please open your wallet and approve the request")
       }
       else{
@@ -89,6 +92,8 @@ function App() {
         updateTotalNumberOfMessages();
         getAllMessages();
       }
+    }
+    else{alert("You can disconnect through your metamask wallet by clicking on the three dots next to your account name. Then select 'Connected sites' and click on the trash icon next to our website. ")}
   }
 
   async function updateTotalNumberOfMessages(){
@@ -125,7 +130,10 @@ function App() {
         <a className="img etherscan" title="Smart Contract - Consult the properties and transaction history" target="_blank" rel="noreferrer" href="https://rinkeby.etherscan.io/address/0xa172d9772309E453Ed660f23247D446558Df813B"> <img src={etherscan}/></a>{/* Contract */}
         <a className="img github" title="Source Code - Solidity & React Repositories" target="_blank" rel="noreferrer" href="https://faucet.rinkeby.io/"> <img src={github}/></a>{/* Github Code */}
         
-        {/* https://giphy.com/search/ */}
+        {totalNumberOfMessages==="NOWALLET"? 
+        <div className="account" style={{background:"red"}} onClick={connectToUserWallet}><img src={userdisconnected} /></div> : 
+        <div className="account" style={{background:"green"}} onClick={connectToUserWallet}><img src={userconnected} /></div>}
+         
       </div>
 
       {totalNumberOfMessages==="NOWALLET"?
@@ -148,8 +156,7 @@ function App() {
       }
 
         <div className="rightpanel">
-        {totalNumberOfMessages==="NOWALLET"? <></> : <h2>Account: {userAccount}</h2>}
-          <div  className="instructions">
+         <div  className="instructions">
             <div className="title">Instructions</div>
             <ul className="list">
               <li>
