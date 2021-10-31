@@ -1,0 +1,34 @@
+@import "./Variables.scss";
+.IconMenu{
+    grid-area: 1 / 1 / 2 / 2;
+    position: fixed;
+    width: 100px; height: 100%;
+    display: flex;flex-direction: column; justify-content: flex-start; align-items: flex-end; padding-right: 10px;
+    .img{cursor:pointer;height: 50px; display: flex; align-items: center; filter: grayscale(0%); filter: -webkit-grayscale(50%);}
+    .img>img{width: 30px; opacity: 100%;}
+    .faucet>img{width: 31px; opacity: 100%; }
+    
+    .account{cursor:pointer;
+      position: absolute; bottom : 20px; right: 5px;
+      height: 40px; width: 40px;
+      border-radius: 50%;
+      display: flex; justify-content: center; align-items:center;
+    }
+}
+
+// Tablet size
+@media only screen and (max-width: 1024px) {
+    .IconMenu{width: 50px;}
+}
+  
+// Mobile size
+@media only screen and (max-width: 600px) {
+    .IconMenu{
+        position: fixed; bottom: 0; height: 60px; width: 100%; z-index: 1;
+        background: white; 
+        flex-direction: row; justify-content: space-around; align-items:center; 
+        .logo{display:none;}
+        .account{position: relative; height:35px; width: 35px; bottom: 0;}
+    }
+}
+  

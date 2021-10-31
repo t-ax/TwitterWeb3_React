@@ -16,6 +16,16 @@ export default function MessageSendingBox(props: any) {
         e.target.style.height = `${e.target.scrollHeight+25}px`; 
     }
 
+    function handleCallback(){
+      if(userMessageToSend===""){alert("The message is empty, if you don't know what to write give us a feedback 1 -> 5")}
+      else{
+        props.callback(userMessageToSend, userImageToSend)
+        setUserMessageToSend("");
+        setUserImageToSend("")
+      }
+      
+    }
+
     return (
         <div className="sendmessage">
 

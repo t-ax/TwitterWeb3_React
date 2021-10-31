@@ -28,7 +28,7 @@
   }
   .bottom{
     display : flex;
-    justify-content: space-between;
+    justify-content: space-between; align-items:flex-start;
     .addingmedia{
       .input{ padding: 0; margin: 0;
         width: 100%;
@@ -36,9 +36,15 @@
         &:focus{outline:none; text-decoration: none;}
         margin-bottom: 10px;
       }
-      img{border-radius: 20px;max-height: 400px; max-width: 500px;}
+      img{border-radius: 20px;max-height: 400px; max-width: 500px; }
       .text{font-size: 0.8em; font-weight: 900; color: $primary_color; text-align:left;}
       // .media{width: 40px; margin-right: 2px;}
     }
   }
+}
+
+@media only screen and (max-width: 620px) {
+  .bottom{flex-direction:column;
+      .button{margin-top: 5px; right:0; align-self: flex-end;}
+    }
 }

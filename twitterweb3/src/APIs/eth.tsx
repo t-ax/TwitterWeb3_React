@@ -3,6 +3,52 @@ import TwitterWeb3ContractArtifact from '../Utils/TwitterWeb3ContractArtifact.js
 
 const CONTRACT_ADDRESS = "0xa172d9772309E453Ed660f23247D446558Df813B";
 
+export const listOfMessagesFake = [
+  {
+    sender:"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+    message:"Time to enjoy life !! #FridayIsTheDay #WeekendHereICome",
+    image:"https://media.giphy.com/media/sTczweWUTxLqg/giphy.gif",
+    timestamp: 'Mon Oct 31 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+  {
+    sender:"0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+    message:"When you love cats, you want to share your passion with the world ! #MoreCatsLessProblems",
+    image:"https://media.tenor.com/images/96163c159943a2b8960aa8322d12c6f5/tenor.gif",
+    timestamp: '... Oct 28 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+  {
+    sender:"0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
+    message:"",
+    image:"https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif",
+    timestamp: '... Oct 28 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+  {
+    sender:"0x90f79bf6eb2c4f870365e785982e1f101e93b906",
+    message:"Salud !!!",
+    image:"https://media.giphy.com/media/Zhxd2OJm3bems/giphy.gif",
+    timestamp: '... Oct 27 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+  {
+    sender:"0x15d34aaf54267db7d7c367839aaf71a00a2c6a65",
+    message:"test",
+    image:"",
+    timestamp: '... Oct 26 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+  {
+    sender:"0x976ea74026e726554db657fa54763abd0c3a0aa9",
+    message:"test",
+    image:"",
+    timestamp: '... Oct 26 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+  {
+    sender:"0x14dc79964da2c08b23698b3d3cc7ca32193d9955",
+    message:"test",
+    image:"",
+    timestamp: '... Oct 26 2021'//new Date(Date.UTC(2021, 10, 26)).valueOf()
+  },
+
+]
+
 declare global {
     interface Window {
         ethereum:any;
