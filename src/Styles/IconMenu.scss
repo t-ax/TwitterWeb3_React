@@ -5,8 +5,8 @@
     width: 100px; height: 100%;
     display: flex;flex-direction: column; justify-content: flex-start; align-items: flex-end; padding-right: 10px;
     .img{cursor:pointer;height: 50px; display: flex; align-items: center; filter: grayscale(0%); filter: -webkit-grayscale(50%);}
-    .img>img{width: 30px; opacity: 100%;}
-    .faucet>img{width: 31px; opacity: 100%; }
+    .img>img{width: 30px; }
+    .faucet>img{width: 31px;  }
     
     .account{cursor:pointer;
       position: absolute; bottom : 20px; right: 5px;

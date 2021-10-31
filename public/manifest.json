@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Twitter Web3",
+  "name": "This is a blockchain version of Twitter using the Ethereum Rinkeby Test Network",
   "icons": [
     {
       "src": "favicon.ico",
