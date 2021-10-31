@@ -74,7 +74,7 @@ function App() {
       {/* Central Panel [Mobile: Central Panel] */}
       {totalNumberOfMessages==="NOWALLET"?
         <div className="centralpanel">
-          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the icon panel to interact with the Blockchain")}} avatar={randomAvatar("johnnnnny")} />
+          <MessageSendingBox callback={()=>{alert("Connect your wallet with the Metamask button on the icon panel to interact with the Blockchain")}} avatar={randomAvatar("johnnnnny")} test="true"/>
 
           {listOfMessagesFake.map((message: any, index: number) => {return ( 
               <MessageReceived key={index} message={message} index={index} avatar={randomAvatar(message.sender.toLowerCase())}/>
@@ -83,7 +83,7 @@ function App() {
         </div>
         : 
         <div className="centralpanel">
-          <MessageSendingBox callback={sendAMessage} avatar={randomAvatar(userAccount)}/>
+          <MessageSendingBox callback={sendAMessage} avatar={randomAvatar(userAccount)} test="false"/>
           {listOfMessages.map((message: any, index: number) => {return ( 
               <MessageReceived key={index} message={message} index={index} avatar={randomAvatar(message.sender.toLowerCase())}/>
             )})

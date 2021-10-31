@@ -32,7 +32,7 @@ export default function MessageSendingBox(props: any) {
             <div className="picture"><img src={props.avatar}/></div>
             <div>
               <div className="top">
-                <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" />
+                {(props.test=="false") ? <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="What's happening?" /> : <textarea className="input" spellCheck="false" onKeyDown={autoResizeTextArea} onChange={event => setUserMessageToSend(event.target.value)} placeholder="Connect to your Metamask wallet to read and send messages. &#10;Fake messages are currently displayed" />}
               </div>
               <div className="bottom">
                 <div className="addingmedia">
