@@ -9,7 +9,7 @@ export default function MessageReceived(props:any) {
             <div className="message">
                 <div className="information">
                 <div className="sender">{props.message.sender}</div>
-                <div className="timestamp">{props.message.timestamp.toString().substr(4,11)}</div>{console.log(props.message.timestamp)}
+                <div className="timestamp">{props.message.timestamp.toString().substr(4,11)}</div>
                 </div>
                 <div className="text">
                     {props.message.message}
