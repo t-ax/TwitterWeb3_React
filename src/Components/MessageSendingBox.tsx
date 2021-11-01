@@ -37,7 +37,7 @@ export default function MessageSendingBox(props: any) {
               <div className="bottom">
                 <div className="addingmedia">
                   
-                  <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true); setUserImageError(false); setUserImageToSend(event.target.value)}} placeholder="Optional: GIF URL (icon panel - black icon)" />
+                  <input className="input" spellCheck="false" onChange={event => {setUserImageLoading(true); setUserImageError(false); setUserImageToSend(event.target.value)}} placeholder="...Optional: GIF URL (icon panel-black icon)" />
                   {(userImageLoading) ? <><img src={imgloading}/></> : <></>}
                   {(!userImageError) ? <div><img src={userImageToSend} onLoad={(event: any) => {setUserImageLoading(false); setUserImageError(false);}} onError={(e: any) => {setUserImageLoading(false); setUserImageError(true); setUserImageToSend(''); e.target.src = ''}} /></div> : <></>}
                   
