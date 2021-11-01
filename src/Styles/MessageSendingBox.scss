@@ -44,6 +44,10 @@
 }
 
 @media only screen and (max-width: 620px) {
+  .sendmessage{
+  .top{
+    .input{height: 121px;}
+  }}
   .bottom{flex-direction:column;
       .button{margin-top: 5px; right:0; align-self: flex-end;}
     }
