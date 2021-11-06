@@ -1,5 +1,6 @@
-# Readme - Twitter Web 3 - React part
+# SOLIDITY CODE : https://github.com/Tariq-Axel/TwitterWeb3_Solidity
 
+# Readme - Twitter Web 3 - React part
 
 ## #BuildSpaceProject
 I'm Tariq Axel, and this is my version of the Web3 project following the course taught within BuildSpace
