@@ -3,7 +3,7 @@
 # Readme - Twitter Web 3 - React part
 
 ## #BuildSpaceProject
-I'm Tariq Axel, and this is my version of the Web3 project following the course taught within BuildSpace
+This is my version of the Web3 project following the course taught within BuildSpace
 
 ## #TweetOnTheBlockchain
 
