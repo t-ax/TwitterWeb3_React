@@ -1,4 +1,4 @@
-# SOLIDITY CODE : https://github.com/Tariq-Axel/TwitterWeb3_Solidity
+# SOLIDITY CODE : https://github.com/t-ax/TwitterWeb3_Solidity
 
 # Readme - Twitter Web 3 - React part
 
