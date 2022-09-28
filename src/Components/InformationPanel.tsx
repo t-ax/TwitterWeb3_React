@@ -9,7 +9,7 @@ export default function InformationPanel(){
             <ul className="list">
               <li>
                   <div className="subtitle">#BuildSpaceProject</div>
-                  <div className="text">I'm Tariq Axel, and this is my version of the Web3 project following the course taught within <a href="https://buildspace.so">BuildSpace</a> </div>
+                  <div className="text">I'm T. Axel Karra, and this is my version of the Web3 project following the course taught within <a href="https://buildspace.so">BuildSpace</a> </div>
               </li>
               <li>
                   <div className="subtitle">#TweetOnTheBlockchain</div>
