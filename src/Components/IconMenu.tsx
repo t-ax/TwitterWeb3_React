@@ -19,7 +19,7 @@ export default function IconMenu(props: any) {
         <a className="img giphy" title="GIF URLs - Add gifs to your messages" target="_blank" rel="noreferrer" href="https://giphy.com/search/"> <img src={giphy}/></a>{/* Giphy  */}
         <a className="img faucet" title="Get ETHs - Rinkeby Test Network Faucet" target="_blank" rel="noreferrer" href="https://faucet.rinkeby.io/"> <img src={faucet}/></a>{/* Ethereum Faucet */}
         <a className="img etherscan" title="Smart Contract - Consult the properties and transaction history" target="_blank" rel="noreferrer" href={`https://rinkeby.etherscan.io/address/${CONTRACT_ADDRESS}`}> <img src={etherscan}/></a>{/* Contract */}
-        <a className="img github" title="Source Code - Solidity & React Repositories" target="_blank" rel="noreferrer" href="https://github.com/Tariq-Axel?tab=repositories"> <img src={github}/></a>{/* Github Code */}
+        <a className="img github" title="Source Code - Solidity & React Repositories" target="_blank" rel="noreferrer" href="https://github.com/t-ax"> <img src={github}/></a>{/* Github Code */}
         
         {props.totalNumberOfMessages==="NOWALLET"? 
         <div className="account" style={{background:"#DB4325"}} onClick={props.connectToUserWallet}><img src={userdisconnected} /></div> : 
